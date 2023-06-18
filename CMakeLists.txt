@@ -30,7 +30,6 @@ target_compile_options(${PROJECT_NAME}
     PRIVATE
         -Wall
         -Wextra
-        -pedantic
 )
 
 # create map/bin/hex file etc.
