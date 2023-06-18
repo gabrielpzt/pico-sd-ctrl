@@ -7,7 +7,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
 
-project(sd_crtl)
+project(pico_sd_ctrl)
 
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
