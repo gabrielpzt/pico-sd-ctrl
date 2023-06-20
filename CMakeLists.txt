@@ -5,7 +5,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 
 # initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
-include(pico_sdk_import.cmake)
+include(cmake/pico_sdk_import.cmake)
 
 project(pico_sd_ctrl)
 
