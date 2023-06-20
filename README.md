@@ -41,5 +41,5 @@ $ cmake --build .
 ```
 
 ## Bibliotecas utilizadas
-- [no-OS-FatFS-SD-SPI-RPi-Pico](https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico01), para a interface com o cartão SD.
+- [no-OS-FatFS-SD-SPI-RPi-Pico](https://github.com/carlk3/no-OS-FatFS-SD-SPI-RPi-Pico/tree/d587243b63c19ddb540e9ae20b2d74eed1921382), para a interface com o cartão SD.
 - [FatFs](http://elm-chan.org/fsw/ff/00index_e.html), para interagir com o FAT32.
