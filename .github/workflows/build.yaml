@@ -27,7 +27,7 @@ jobs:
         run: git clone https://github.com/raspberrypi/pico-sdk.git
 
       - name: Configure CMake
-        run: cmake -S . -B build
+        run: cmake -S . -B build -D PICO_SDK_PATH=pico-sdk
 
       - name: Build
-        run: cmake --build ./build -D PICO_SDK_PATH=pico-sdk
+        run: cmake --build ./build
