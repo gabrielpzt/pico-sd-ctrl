@@ -12,7 +12,7 @@ project(pico_sd_ctrl)
 # initialize the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-add_subdirectory(include/FatFs_SPI build)
+add_subdirectory(include/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI build)
 
 add_executable(${PROJECT_NAME} 
     src/main.c
