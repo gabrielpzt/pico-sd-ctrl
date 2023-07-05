@@ -21,6 +21,7 @@ add_executable(${PROJECT_NAME}
 # Add the standard library and FatFS/SPI to the build
 target_link_libraries(${PROJECT_NAME} 
     pico_stdlib
+    hardware_pwm
     FatFs_SPI
 )
 
@@ -31,6 +32,10 @@ target_compile_options(${PROJECT_NAME}
         -Wall
         -Wextra
 )
+
+# enable usb output, disable uart output
+pico_enable_stdio_usb(${PROJECT_NAME} 1)
+pico_enable_stdio_uart(${PROJECT_NAME} 0)
 
 # create map/bin/hex file etc.
 pico_add_extra_outputs(${PROJECT_NAME})
