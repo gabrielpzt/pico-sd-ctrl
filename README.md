@@ -1,25 +1,22 @@
 # pico-sd-ctrl
 
 ## Descrição
-Controlador de cartão SD para uso no projeto [FPGA-SOM](https://github.com/PCS-Poli-USP/projeto-final-projeto-43) de LabDigi A, 2023, usando uma Raspberry Pi Pico, interagindo com uma FPGA [DE0-CV](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=163&No=921) da Terasic por meio do protocolo SPI, onde o MCU é o escravo.
+Controlador de cartão SD para uso no projeto [FPGA-SOM](https://github.com/PCS-Poli-USP/projeto-final-projeto-43) de LabDigi A, 2023, usando uma Raspberry Pi Pico, interagindo com uma FPGA [DE0-CV](https://www.terasic.com.tw/cgi-bin/page/archive.pl?Language=English&CategoryNo=163&No=921) da Terasic por meio de pinos GPIO.
 
-Por meio de faixas em `.wav` armazenadas no diretório *raíz* do cartão SD, o MCU transmite os dados da faixa atual para a placa FPGA, onde ela será tocada por meio de um DAC de 1 bit.
+Por meio de faixas em `.wav` armazenadas no diretório *raíz* do cartão SD, o MCU usa um DAC de 1 bit para reproduzi-las.
 
-Para controlar qual faixa está sendo enviada, a placa envia algum dos possíveis comandos abaixo, um byte, por meio da linha MOSI:
+Para controlar qual faixa está sendo enviada, a placa coloca um dos três GPIO configurados nela em alto, acarretando as seguintes funções:
 
-### Comandos
-- `0x00`: OK (ignorar).
-- `0x01`: PAUSE (para de enviar a faixa).
-- `0x02`: SKIP (começa a transmitir a próxima faixa).
-- `0x03`: RETURN (passa para a faixa anterior).
-
-Alternativamente, é possível colocar o Chip Select em alto, pois a Pico é ativa em baixo, para para de enviar a faixa.
+### Funcionalidades
+- PAUSE (para de enviar a faixa).
+- SKIP (começa a transmitir a próxima faixa).
+- RETURN (passa para a faixa anterior).
 
 ## Recursos utilizados
 
 - 1 Raspberry Pi Pico. Nesse caso, será utilizado uma [RP2040-Zero](https://www.waveshare.com/wiki/RP2040-Zero).
-- 2 resistores de 10K ohms para pull-up.
 - 1 módulo leitor de cartão SD.
+- Filtro passa-baixas para remover o ruído (detalhado no projeto).
 
 ## Firmware
 
@@ -35,8 +32,8 @@ Clone o repositório e monte o executável, substituindo `path_da_sdk` para o ca
 
 ```console
 $ git clone https://github.com/gabrielpzt/pico-sd-ctrl.git
-$ cmake -S. -Bbuild -DPICO_SDK_PATH=path_da_sdk -DBOARD_NAME=nome_da_placa
-$ cd build
+$ mkdir build && cd build
+$ cmake .. -DPICO_SDK_PATH=path_da_sdk -DPICO_BOARD=nome_da_placa
 $ cmake --build .
 ```
 
